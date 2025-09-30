@@ -1,1 +1,67 @@
-<!-- Frontend HTML placeholder -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Interior Design</title>
+    <!-- Link CSS (if any) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- A-Frame library for 3D scenes -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+    <h1>3D Interior Design App</h1>
+
+    <!-- Upload room image -->
+    <div>
+        <h3>Upload Room Photo</h3>
+        <form id="roomForm">
+            <input type="file" name="file" id="roomFile">
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <!-- Upload wall image -->
+    <div>
+        <h3>Upload Wall Photo</h3>
+        <form id="wallForm">
+            <input type="file" name="file" id="wallFile">
+            <button type="submit">Upload</button>
+        </form>
+        <div id="wallSuggestions"></div>
+    </div>
+
+    <!-- Material suggestions -->
+    <div>
+        <h3>Material Suggestions</h3>
+        <button id="materialBtn">Get Materials</button>
+        <ul id="materialsList"></ul>
+    </div>
+
+    <!-- Upload video -->
+    <div>
+        <h3>Upload Home Video</h3>
+        <form id="videoForm">
+            <input type="file" name="file" id="videoFile">
+            <button type="submit">Upload Video</button>
+        </form>
+        <div id="video3DContainer"></div>
+    </div>
+
+    <!-- 3D Scene -->
+    <div>
+        <h3>3D Scene</h3>
+        <a-scene embedded>
+            <a-assets>
+                <a-asset-item id="scene-3d" src="{{ url_for('static', filename='3d_scene_placeholder.glb') }}"></a-asset-item>
+            </a-assets>
+
+            <a-entity gltf-model="#scene-3d" position="0 0 0" rotation="0 0 0" scale="1 1 1"></a-entity>
+            <a-sky color="#ECECEC"></a-sky>
+            <a-camera position="0 1.6 3"></a-camera>
+        </a-scene>
+    </div>
+
+    <!-- JS scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
